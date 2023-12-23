@@ -1,0 +1,43 @@
+<h1 id="tableLabel">Doctor Page</h1>
+
+
+
+<form novalidate  #formData="ngForm">
+  <div class="row">
+    <div class="col-md-4">
+      <input name="DoctorId" placeholder="Doctor ID" ngModel class="form-control" type="text">
+    </div>
+    <div class="col-md-3">
+      
+      <input name="fromDate" [(ngModel)]="myDate" class="form-control" type="date" >
+    </div>
+    <div class="col-md-3">
+      <input name="toDate" [(ngModel)]="myDate" class="form-control"  type="date"    >
+    </div>
+    <div class="col-md-2">
+      <button class="btn btn-primary" (click)="getData(formData.value)">Search</button>
+    </div>
+  </div>
+</form>
+
+<table class='table table-striped' aria-labelledby="tableLabel">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Reservation Date</th>
+      <th scope="col">Reservation Time From</th>
+      <th scope="col">Reservation Time To</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let Reservation of Reservations['$values']">
+      <th scope="row">{{Reservation['$id']}}</th>
+      <td>{{Reservation['patient']}}</td>
+      <td>{{Reservation['Date']}}</td>
+      <td>{{Reservation['From']}}</td>
+      <td>{{Reservation['To']}}</td>
+    </tr>
+    
+  </tbody>
+</table>
